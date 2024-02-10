@@ -1,6 +1,7 @@
 import { ETipoValorEnum } from "../../shared/enum/ETipoValorEnum";
 import { ValorModel } from "../../shared/models/ValorModel";
 import { useState } from "react";
+import { CardValorProps } from "./card-valor";
 
 const mockEntradas: ValorModel[] = [
   {
@@ -13,7 +14,9 @@ const mockEntradas: ValorModel[] = [
     valor: 25.50,
     descricao: "Segundo registro"
   }
-]
+];
+
+
 
 
 export default function useDisplayValores() {
@@ -26,7 +29,8 @@ export default function useDisplayValores() {
   const valorTotalSaidas = tratarValorTotal(valoresSaidas);
   const valorTotalInvestimentos = tratarValorTotal(valoresInvestimentos);
 
-  const entradaProps = {
+
+  const entradaProps: CardValorProps = {
     cabecalhoProps: {
       valorTotal: valorTotalEntradas,
       tipoCard: ETipoValorEnum.ENTRADA,
@@ -38,8 +42,33 @@ export default function useDisplayValores() {
     }
   }
 
+  const saidaProps: CardValorProps = {
+    cabecalhoProps: {
+      valorTotal: valorTotalSaidas,
+      tipoCard: ETipoValorEnum.SAIDA,
+      novoValor: () => { alert('Teste') }
+    },
+    detalhesProps: {
+      tipoCard: ETipoValorEnum.SAIDA,
+      valores: valoresSaidas
+    }
+  }
+
+  const investimentoProps: CardValorProps = {
+    cabecalhoProps: {
+      valorTotal: valorTotalInvestimentos,
+      tipoCard: ETipoValorEnum.INVESTIMENTO,
+      novoValor: () => { alert('Teste') }
+    },
+    detalhesProps: {
+      tipoCard: ETipoValorEnum.INVESTIMENTO,
+      valores: valoresInvestimentos
+    }
+  }
+
   return {
     entradaProps,
-
+    saidaProps,
+    investimentoProps
   }
 }

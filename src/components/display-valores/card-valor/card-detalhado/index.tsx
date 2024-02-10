@@ -1,9 +1,9 @@
-import { ETipoValorEnum, retornarCoresCard } from "../../../shared/enum/ETipoValorEnum";
-import { ValorModel } from "../../../shared/models/ValorModel";
+import { ETipoValorEnum, retornarCoresCard } from "../../../../shared/enum/ETipoValorEnum";
+import { ValorModel } from "../../../../shared/models/ValorModel";
 import { Col, Row } from "antd";
-import { formatarMoeda } from "../../../shared/utils";
+import { formatarMoeda } from "../../../../shared/utils";
 
-interface CardDetalhadoProps {
+export interface CardDetalhadoProps {
   tipoCard: ETipoValorEnum,
   valores: ValorModel[]
 }
@@ -40,7 +40,14 @@ export default function CardDetalhado(props: CardDetalhadoProps) {
           </>
         }) :
 
-        <></>}
+        <Row
+          className="shadow body-row"
+          style={{ backgroundColor: corSecundaria }}
+        >
+          <Col className="body-row-vazio" span={24}>
+            Nenhum valor adicionado
+          </Col>
+        </Row>}
     </div>
   );
 }

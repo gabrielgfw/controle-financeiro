@@ -1,10 +1,10 @@
 import { Col, Row } from "antd";
-import { ETipoValorEnum, retornarCoresCard, retornarTituloCard } from "../../../shared/enum/ETipoValorEnum";
-import { formatarMoeda } from "../../../shared/utils";
+import { ETipoValorEnum, retornarCoresCard, retornarTituloCard } from "../../../../shared/enum/ETipoValorEnum";
+import { formatarMoeda } from "../../../../shared/utils";
 import { PlusOutlined } from "@ant-design/icons";
 import './style.css';
 
-interface CardCabecalhoProps {
+export interface CardCabecalhoProps {
   tipoCard: ETipoValorEnum;
   valorTotal: number;
   novoValor: () => void;

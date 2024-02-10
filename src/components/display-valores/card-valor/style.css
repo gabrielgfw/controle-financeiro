@@ -1,0 +1,44 @@
+.card-wrapper {
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.card-body {
+  /* height: 500px; */
+  height: fit-content;
+  width: 470px;
+  border-radius: 25px;
+  background-color: var(--card-red);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
+.card-body .body-row {
+  height: 50px;
+  width: 430px;
+  background-color: var(--card-red-darker);
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 25px;
+  padding-left: 25px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 15px;
+}
+
+.card-body .body-row .body-row-text {
+  text-align: end;
+}
+
+.card-body .body-row .body-row-vazio {
+  text-align: center;
+}
