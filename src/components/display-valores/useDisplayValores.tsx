@@ -20,8 +20,11 @@ const mockEntradas: ValorModel[] = [
 
 
 export default function useDisplayValores() {
+  // @ts-ignore
   const [valoresEntradas, setValoresEntradas] = useState<ValorModel[]>(mockEntradas);
+  // @ts-ignore
   const [valoresSaidas, setValoresSaidas] = useState<ValorModel[]>([]);
+  // @ts-ignore
   const [valoresInvestimentos, setValoresInvestimentos] = useState<ValorModel[]>([]);
 
   const tratarValorTotal = (lista: ValorModel[]) => lista?.length > 0 ? lista.reduce((p, n) => p + n.valor, 0) : 0;
