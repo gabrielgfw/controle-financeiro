@@ -1,8 +1,7 @@
 import { Space } from "antd";
-import './style.css';
+import './style.scss';
 import useDisplayValores from "./useDisplayValores";
 import { CardValor } from "./card-valor";
-
 
 export default function DisplayValores() {
   const {
@@ -11,14 +10,11 @@ export default function DisplayValores() {
     saidaProps
   } = useDisplayValores();
 
-
   return (
-    <>
-      <Space align="start">
-        <CardValor {...entradaProps} />
-        <CardValor {...saidaProps} />
-        <CardValor {...investimentoProps} />
-      </Space>
-    </>
+    <Space className="display-container">
+      <CardValor {...entradaProps} />
+      <CardValor {...saidaProps} />
+      <CardValor {...investimentoProps} />
+    </Space>
   );
 }

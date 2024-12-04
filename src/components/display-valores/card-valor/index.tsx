@@ -1,7 +1,7 @@
 import { Space } from "antd";
 import CardCabecalho, { CardCabecalhoProps } from "./card-cabecalho";
 import CardDetalhado, { CardDetalhadoProps } from "./card-detalhado";
-import "./style.css";
+import "./style.scss";
 
 export interface CardValorProps {
   cabecalhoProps: CardCabecalhoProps;

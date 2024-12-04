@@ -2,19 +2,15 @@ import { ETipoValorEnum, retornarCoresCard } from "../../../../shared/enum/ETipo
 import { ValorModel } from "../../../../shared/models/ValorModel";
 import { Col, Row } from "antd";
 import { formatarMoeda } from "../../../../shared/utils";
+import './style.scss';
 
 export interface CardDetalhadoProps {
   tipoCard: ETipoValorEnum,
   valores: ValorModel[]
 }
 
-
 export default function CardDetalhado(props: CardDetalhadoProps) {
-  const {
-    tipoCard,
-    valores
-  } = props;
-
+  const { tipoCard, valores } = props;
   const { corPrincipal, corSecundaria } = retornarCoresCard(tipoCard);
 
   return (

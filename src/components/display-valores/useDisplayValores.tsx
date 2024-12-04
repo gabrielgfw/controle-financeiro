@@ -3,28 +3,9 @@ import { ValorModel } from "../../shared/models/ValorModel";
 import { useState } from "react";
 import { CardValorProps } from "./card-valor";
 
-const mockEntradas: ValorModel[] = [
-  {
-    tipoValor: ETipoValorEnum.ENTRADA,
-    valor: 25.50,
-    descricao: "Primeiro registro"
-  },
-  {
-    tipoValor: ETipoValorEnum.ENTRADA,
-    valor: 25.50,
-    descricao: "Segundo registro"
-  }
-];
-
-
-
-
 export default function useDisplayValores() {
-  // @ts-ignore
-  const [valoresEntradas, setValoresEntradas] = useState<ValorModel[]>(mockEntradas);
-  // @ts-ignore
+  const [valoresEntradas, setValoresEntradas] = useState<ValorModel[]>([]);
   const [valoresSaidas, setValoresSaidas] = useState<ValorModel[]>([]);
-  // @ts-ignore
   const [valoresInvestimentos, setValoresInvestimentos] = useState<ValorModel[]>([]);
 
   const tratarValorTotal = (lista: ValorModel[]) => lista?.length > 0 ? lista.reduce((p, n) => p + n.valor, 0) : 0;
@@ -32,12 +13,20 @@ export default function useDisplayValores() {
   const valorTotalSaidas = tratarValorTotal(valoresSaidas);
   const valorTotalInvestimentos = tratarValorTotal(valoresInvestimentos);
 
+  const inserirNovoValor = (novoValorProps: ValorModel): void => {
+    const tiposValores = {
+      ENTRADA: () => setValoresEntradas([...valoresEntradas, novoValorProps]),
+      SAIDA: () => setValoresSaidas([...valoresSaidas, novoValorProps]),
+      INVESTIMENTO: () => setValoresInvestimentos([...valoresInvestimentos, novoValorProps])
+    };
+    tiposValores[novoValorProps.tipoValor]();
+  };
 
   const entradaProps: CardValorProps = {
     cabecalhoProps: {
       valorTotal: valorTotalEntradas,
       tipoCard: ETipoValorEnum.ENTRADA,
-      novoValor: () => { alert('Teste') }
+      inserirNovoValor: inserirNovoValor
     },
     detalhesProps: {
       tipoCard: ETipoValorEnum.ENTRADA,
@@ -49,7 +38,7 @@ export default function useDisplayValores() {
     cabecalhoProps: {
       valorTotal: valorTotalSaidas,
       tipoCard: ETipoValorEnum.SAIDA,
-      novoValor: () => { alert('Teste') }
+      inserirNovoValor
     },
     detalhesProps: {
       tipoCard: ETipoValorEnum.SAIDA,
@@ -61,7 +50,7 @@ export default function useDisplayValores() {
     cabecalhoProps: {
       valorTotal: valorTotalInvestimentos,
       tipoCard: ETipoValorEnum.INVESTIMENTO,
-      novoValor: () => { alert('Teste') }
+      inserirNovoValor
     },
     detalhesProps: {
       tipoCard: ETipoValorEnum.INVESTIMENTO,

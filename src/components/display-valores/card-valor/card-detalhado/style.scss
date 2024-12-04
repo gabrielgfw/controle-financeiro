@@ -1,0 +1,40 @@
+$card-width: 400px;
+$body-row-width: 370px;
+$border-radius-card: 18px;
+$border-radius-row: 12px;
+$padding-horizontal-row: 25px;
+
+.card-body {
+  height: fit-content;
+  width: $card-width;
+  border-radius: $border-radius-card;
+  background-color: var(--card-red);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 15px;
+
+  .body-row {
+    height: 50px;
+    width: $body-row-width;
+    background-color: var(--card-red-darker);
+    border-radius: $border-radius-row;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 $padding-horizontal-row;
+    font-weight: 500;
+    margin-top: 15px;
+
+    .body-row-text {
+      text-align: end;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .body-row-vazio {
+      text-align: center;
+    }
+  }
+}
