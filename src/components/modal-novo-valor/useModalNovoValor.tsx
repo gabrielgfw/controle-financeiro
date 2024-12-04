@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { ETipoValorEnum } from "../../shared/enum/ETipoValorEnum";
 import { Form } from "antd";
-import { CardValorProps } from "../display-valores/card-valor";
 import { converterMonetarioParaNumber, converterValorParaMonetario } from "../../shared/utils";
+import { ValorModel } from "../../shared/models/ValorModel";
 
 export interface ModalNovoValorProps {
-  inserirNovoValor: (novoValor: CardValorProps) => void;
+  inserirNovoValor: (novoValor: ValorModel) => void;
   tipoValor: ETipoValorEnum;
 }
 
